@@ -1,0 +1,18 @@
+{
+  "employee": [
+    {
+      "empno": 1325,
+      "name": "dharmendra",
+      "city": "Bhopal",
+      "salary": 45000,
+      "id": "0da3"
+    },
+    {
+      "id": "b857",
+      "empno": "123456",
+      "name": "Harsh Thakre",
+      "city": "bhopal",
+      "salary": "45000"
+    }
+  ]
+}

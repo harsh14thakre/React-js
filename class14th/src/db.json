@@ -1,0 +1,20 @@
+{
+  "Employee": [
+    {
+      "Empno": "1",
+      "name": "Harsh",
+      "designation": "Manager",
+      "department": "managment",
+      "salary": 700000,
+      "id": "7fd7"
+    },
+    {
+      "id": "e390",
+      "empno": "3",
+      "name": "dharmendra",
+      "designation": "manager",
+      "department": "cse",
+      "salary": "54000"
+    }
+  ]
+}
