@@ -1,55 +1,131 @@
 import { useState } from "react";
-import { useSelector , useDispatch } from "react-redux";
-import { addTask , removeIDtask , removeTask } from "./todoSlice";
-const App=()=>{
-  // const [val, setval]=useState("");
-  const[txtval,]
-  const data = useSelector(state=>state.todo.task);
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addTask,
+  RemoveTask,
+  taskComplete,
+  taskInComplete,
+  myEditSave,
+} from "./todoSlice";
+function App() {
+  const [txtVal, setTxtVal] = useState("");
+  const [btnStatus, setbtnStatus] = useState(true);
+  const [myid, setMyid] = useState("");
+  const Data = useSelector((state) => state.todo.task);
   const dispatch = useDispatch();
-  console.log(data);
-  
-  let sno=0;
-  const ans=data.map((key ,  index)=>{
+  console.log(Data);
+
+  const dataEdit = (id, work) => {
+    setTxtVal(work);
+    setbtnStatus(false);
+    setMyid(id);
+  };
+
+  const myEditData = () => {
+    dispatch(myEditSave({ id: myid, work: txtVal }));
+    setbtnStatus(true);
+  };
+
+  let sno = 0;
+  const ans = Data.map((key) => {
     sno++;
-
-    return(
+    return (
       <>
-       <tr>
-        <td>{sno}</td>
-        <td>{key.task}</td>
-        <td>
-          <button onClick={()=>{dispatch(removeTask({id:key.id}))}}>Delete</button>
+        <tr>
+          <td> {sno} </td>
+          <td>
+            {key.taskStatus ? (
+              <>
+                <span style={{ color: "red", textDecoration: "line-through" }}>
+                  {key.work}
+                </span>
+              </>
+            ) : (
+              <>{key.work} </>
+            )}
           </td>
-        <td>
-          <button onClick={()=>{dispatch(removeIDtask({id:index}))}}>DelId</button>
+          <td>
+            <button
+              onClick={() => {
+                dispatch(RemoveTask({ id: key.id }));
+              }}
+            >
+              Del
+            </button>
           </td>
-       </tr>
+          <td>
+            <button
+              onClick={() => {
+                dispatch(taskComplete({ id: key.id }));
+              }}
+            >
+              Complete
+            </button>
+          </td>
+          <td>
+            <button
+              onClick={() => {
+                dispatch(taskInComplete({ id: key.id }));
+              }}
+            >
+              InComplete
+            </button>
+          </td>
+          <td>
+            <button
+              onClick={() => {
+                dataEdit(key.id, key.work);
+              }}
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
       </>
-    )
-  })
-
-  return(
+    );
+  });
+  return (
     <>
-        <h1>Welcome To Do App</h1>
-        Enter the Task:
-        <input type="text" value={val}  onChange={(e)=>{setval(e.target.value)}}/>
-        <button onClick={()=>{dispatch(addTask({id:Date.now(), task:val}))}}>Add</button>
-
-        <hr />
-        <table border="1">
-          <tbody>
-         <tr>
-          <th>Sno</th>
-          <th>Task</th>
+      <h1> ToDo App </h1>
+      Enter Your Task{" "}
+      <input
+        type="text"
+        value={txtVal}
+        onChange={(e) => {
+          setTxtVal(e.target.value);
+        }}
+      />
+      {btnStatus ? (
+        <>
+          <button
+            onClick={() => {
+              dispatch(
+                addTask({ id: Date.now(), work: txtVal, taskStatus: false })
+              );
+            }}
+          >
+            Add
+          </button>
+        </>
+      ) : (
+        <>
+          <button onClick={myEditData}>Edit Save</button>
+        </>
+      )}
+      <hr />
+      <table>
+        <tr>
+          <th> Sno</th>
+          <th> Your Work </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
           <th></th>
-          </tr>
-          </tbody>
-          <tbody>
-            {ans}
-            </tbody>  
-        </table>    
+        </tr>
+        {ans}
+      </table>
     </>
-  )
+  );
 }
 
 export default App;
