@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useSelector , useDispatch } from "react-redux";
 import { addTask , removeIDtask , removeTask } from "./todoSlice";
 const App=()=>{
-  const [val, setval]=useState("");
+  // const [val, setval]=useState("");
+  const[txtval,]
   const data = useSelector(state=>state.todo.task);
   const dispatch = useDispatch();
   console.log(data);
