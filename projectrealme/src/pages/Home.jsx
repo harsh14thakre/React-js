@@ -34,10 +34,9 @@ const Home=()=>{
     </Carousel> <br /> <br />
 
     {/* -------------------------------------------slider end------------------------------------------------- */}
-<div id='card'>
+<div >
 
-
-       <div style={{display:"flex" , flexWrap:"wrap" , }}>
+       <div style={{display:"flex" , flexWrap:"wrap" , }} id='card'>
      <Card style={{ width: '18rem', height: '18rem' }}>
       <Card.Body>
        <img src={slider1} alt=""  width="100%" height="100%"/>
@@ -64,6 +63,18 @@ const Home=()=>{
 
     </div>
     </div>
+    <br /><br />
+
+
+    {/* ------------------------------------------------------------------------------------------------------ */}
+
+    <div id='imgsection'>
+      <div><img src="" alt="" /></div>
+      <div><img src="" alt="" /></div>
+      <div><img src="" alt="" /></div>
+      <div><img src="" alt="" /></div>
+    </div>
+    <br /><br />
         </>
     )
 }
