@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-
+import { FaCartPlus } from "react-icons/fa";
 const TopMenu=()=>{
     return(
         <>       
@@ -22,7 +22,8 @@ const TopMenu=()=>{
             <Nav.Link as={Link} to="realmiui" >realmi UI</Nav.Link>
 
             <Nav.Link as={Link} to="search" >Search</Nav.Link>
-           
+            <FaCartPlus style={{color: "white", fontSize: "25px", display: "flex", }} />
+            
           </Nav>
         </Container>
       </Navbar>
