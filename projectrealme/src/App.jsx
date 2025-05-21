@@ -8,6 +8,7 @@ import Accessories from "./pages/accessories";
 import Community from "./pages/community";
 import Support from "./pages/support";
 import Brand from "./pages/brand";
+import MyCart from "./pages/Mycart";
 import Realmiui from "./pages/realmiui";
 
 const App=()=>{
@@ -22,7 +23,7 @@ const App=()=>{
            <Route path="phone" element={<Phone/>}/>
            <Route path="audio" element={<Audio/>}/>
            <Route path="accessories" element={<Accessories/>}/>
-
+            <Route path="mycart" element={<MyCart/>}/>
            <Route path="community" element={<Community/>}/>
            <Route path="support" element={<Support/>}/>
            <Route path="brand" element={<Brand/>}/>
